@@ -1,0 +1,25 @@
+<%= link_to 'New loan', new_loan_path %>
+<table class="table">
+		<tr>
+			<th>id</th>
+			<th>amount</th>
+			<th>year</th>
+			<th>interest</th>
+			<th>view detail</th>
+			<th>edit</th>
+			<th>destroy</th>
+		</tr>
+	<% @loans.each do |l|%>
+		<tr>
+			<td><%= l.id %></td>
+			<td><%= l.amount %></td>
+			<td><%= l.year %></td>
+			<td><%= l.interest %></td>
+			<td><%= link_to 'View', loan_path(l) %></td>
+			<td><%= link_to 'Edit', edit_loan_path(l) %></td>
+       		<td><%= link_to 'Destroy', loan_path(l),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+	
+</table>

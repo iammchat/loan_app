@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<%= form_for @loan do |f| %>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= f.label :amount %>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<div class="input-group-addon">
+    				&#xe3f;
+    			</div>
+    			<%= f.number_field :amount, :placeholder => 'Enter amount value', :class => 'form-control', :step => 1 %>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= f.label :year, 'Year(s) ' %>	
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<%= f.number_field :year, :class => 'form-control', :step => 1 %>
+    			<div class="input-group-addon">
+    				Years
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-sm-offset-1">
+		<%= f.label :interest, 'Interest ' %>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<%= f.text_field :interest,:value => 3.5,:class => 'form-control' %>
+    			<div class="input-group-addon">
+    				%
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= f.submit "Submit",class: 'btn btn-success' %>
+	</div>
+</div>
+<% end %>
+</div>
+<div id="results"></div>

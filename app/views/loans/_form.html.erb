@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<%= form_tag("/loan/loan_action", method: "post", id: 'loan_form', remote: true) do %>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= label_tag(:amount, 'Amount ') %>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<div class="input-group-addon">
+    				&#xe3f;
+    			</div>
+    			<%= number_field_tag(:amount,nil,placeholder: 'Enter amount value',  class: 'form-control') %>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= label_tag(:year, 'Year(s) ') %>	
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<%= number_field_tag(:year,nil,class: 'form-control') %>
+    			<div class="input-group-addon">
+    				Years
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-1 col-sm-offset-1">
+		<%= label_tag(:interest, 'Interest ') %>
+	</div>
+	<div class="col-sm-3">
+		<div class="form-group">
+    		<div class="input-group">
+    			<%= text_field_tag(:interest,3.5,class: 'form-control') %>
+    			<div class="input-group-addon">
+    				%
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="row">
+	<div class="col-sm-1 col-sm-offset-1">
+		<%= submit_tag("Submit",class: 'btn btn-success') %>
+	</div>
+</div>
+<% end %>
+</div>
+<div id="results"></div>

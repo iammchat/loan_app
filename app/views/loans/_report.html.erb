@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="well">
+		<p><strong>Amount : </strong> <%= @amount %></p>
+		<p><strong>Year : </strong> <%= @year %> Years</p>
+		<p><strong>Interest : </strong> <%= @interest %> %</p>
+	</div>
+<table class="table table-hover">
+	<tr>
+		<th>Month/Year</th>
+		<th>Payment</th>
+		<th>Principle Paid</th>
+		<th>Interest Paid</th>
+		<th>Total Interest</th>
+		<th>Balance</th>
+	</tr>
+	<% date = DateTime.now.to_date %>
+	<% Date::DATE_FORMATS[:month_and_year] = '%b / %Y' %>
+	<% for i in 0..(@total_month - 1) %>
+		<tr>
+			<td><%= date.to_formatted_s(:month_and_year)  %></td>
+			<td><%= LoansController.currency_format(@monthly_payment.round(2)) %></td>
+			<td><%= LoansController.currency_format(@principle_set[i]) %></td>
+			<td><%= LoansController.currency_format(@interest_set[i]) %></td>
+			<td><%= LoansController.currency_format(@interest_total_set[i]) %></td>
+			<td><%= LoansController.currency_format(@balance_set[i]) %></td>
+		</tr>
+		<% date = date.to_time.advance(:months => 1).to_date %>
+	<% end %>
+</table>
+</div>
